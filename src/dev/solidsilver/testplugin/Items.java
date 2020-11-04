@@ -1,4 +1,4 @@
-package dev.solidsilver.compressor;
+package dev.solidsilver.testplugin;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;

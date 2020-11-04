@@ -1,13 +1,11 @@
-package dev.solidsilver.compressor;
+package dev.solidsilver.testplugin;
 
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.*;
 
-import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.math.BigInteger;
 import java.util.ArrayList;
 
 public class Recipies {

@@ -1,4 +1,4 @@
-package dev.solidsilver.compressor;
+package dev.solidsilver.testplugin;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

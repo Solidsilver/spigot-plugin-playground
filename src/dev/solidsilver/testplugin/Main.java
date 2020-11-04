@@ -1,4 +1,4 @@
-package dev.solidsilver.compressor;
+package dev.solidsilver.testplugin;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -40,11 +40,6 @@ public class Main extends JavaPlugin implements CommandExecutor, Listener {
         //Fired when the server stops and disables all plugins
     }
 
-//
-
-
-
-
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
@@ -72,8 +67,6 @@ public class Main extends JavaPlugin implements CommandExecutor, Listener {
 
         return true;
     }
-
-
 
     @EventHandler
     public void onMine(BlockBreakEvent event) {
