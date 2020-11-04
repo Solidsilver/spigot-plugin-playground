@@ -3,7 +3,6 @@ package dev.solidsilver.testplugin;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -12,11 +11,10 @@ import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.*;
 import org.bukkit.plugin.java.JavaPlugin;
 
-
-public class Main extends JavaPlugin implements CommandExecutor, Listener {
+public class Main extends JavaPlugin implements Listener {
 
     @Override
-    public void onEnable(){
+    public void onEnable() {
         Recipies rp = new Recipies(this);
 
         for (int i = 1; i <= 128; i++) {
@@ -36,8 +34,8 @@ public class Main extends JavaPlugin implements CommandExecutor, Listener {
     }
 
     @Override
-    public void onDisable(){
-        //Fired when the server stops and disables all plugins
+    public void onDisable() {
+        // Fired when the server stops and disables all plugins
     }
 
     @Override
@@ -64,19 +62,23 @@ public class Main extends JavaPlugin implements CommandExecutor, Listener {
             }
         }
 
-
         return true;
     }
 
     @EventHandler
     public void onMine(BlockBreakEvent event) {
         Material block = event.getBlock().getType();
-        if (block == Material.GOLD_ORE) {
-            event.setDropItems(false);
-            event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), Items.getGoldOreDrop());
-        } else if (block == Material.IRON_ORE) {
-            event.setDropItems(false);
-            event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), Items.getIronOreDrop());
+        Player player = event.getPlayer();
+        ItemStack inHand = player.getInventory().getItemInMainHand();
+        if (inHand == new ItemStack(Material.DIAMOND_PICKAXE) || inHand == new ItemStack(Material.IRON_PICKAXE)
+                || inHand == new ItemStack(Material.GOLDEN_PICKAXE)) {
+            if (block == Material.GOLD_ORE) {
+                event.setDropItems(false);
+                event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), Items.getGoldOreDrop());
+            } else if (block == Material.IRON_ORE) {
+                event.setDropItems(false);
+                event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), Items.getIronOreDrop());
+            }
         }
     }
 
