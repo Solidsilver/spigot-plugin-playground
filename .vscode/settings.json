@@ -7,8 +7,7 @@
   },
   "java.project.referencedLibraries": {
     "include": [
-      "lib/**/*.jar",
-      "/home/solidsilver/Downloads/spigot_libs/**/*.jar"
+      "lib/**/*.jar"
     ],
   }
 }
