@@ -1,7 +1,7 @@
-name: Compressor
-version: 0.1.1
+name: TestPlugin
+version: 0.1.3
 author: InspectorElement
-main: dev.solidsilver.compressor.Main
+main: dev.solidsilver.testplugin.Main
 api-version: 1.16
 commands:
   compressedCobble:

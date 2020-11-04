@@ -2,6 +2,7 @@ package dev.solidsilver.testplugin;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.block.Block;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -67,17 +68,18 @@ public class Main extends JavaPlugin implements Listener {
 
     @EventHandler
     public void onMine(BlockBreakEvent event) {
-        Material block = event.getBlock().getType();
-        Player player = event.getPlayer();
-        ItemStack inHand = player.getInventory().getItemInMainHand();
-        if (inHand == new ItemStack(Material.DIAMOND_PICKAXE) || inHand == new ItemStack(Material.IRON_PICKAXE)
-                || inHand == new ItemStack(Material.GOLDEN_PICKAXE)) {
-            if (block == Material.GOLD_ORE) {
-                event.setDropItems(false);
-                event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), Items.getGoldOreDrop());
-            } else if (block == Material.IRON_ORE) {
-                event.setDropItems(false);
-                event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), Items.getIronOreDrop());
+        Block block = event.getBlock();
+        if (block.getDrops(event.getPlayer().getInventory().getItemInMainHand()).size() > 0) {
+            if (event.isDropItems()) {
+                if (block.getType() == Material.GOLD_ORE) {
+                    event.setDropItems(false);
+                    event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(),
+                            Items.getGoldOreDrop());
+                } else if (block.getType() == Material.IRON_ORE) {
+                    event.setDropItems(false);
+                    event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(),
+                            Items.getIronOreDrop());
+                }
             }
         }
     }
