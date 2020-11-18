@@ -13,6 +13,8 @@ import org.bukkit.inventory.*;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import dev.solidsilver.testplugin.items.CustomItem;
+import dev.solidsilver.testplugin.items.tools.FancyRapier;
+import dev.solidsilver.testplugin.items.tools.Rapier;
 
 public class Main extends JavaPlugin implements Listener {
 
@@ -46,6 +48,13 @@ public class Main extends JavaPlugin implements Listener {
         for (CustomItem tool : Items.getToolSetFrom(Material.BLACKSTONE, "Stone", 5001)) {
             tool.registerRecipe(this);
         }
+
+        CustomItem ironRapier = new Rapier(Material.IRON_INGOT, 6001, 5, 5);
+        ironRapier.registerRecipe(this);
+
+        CustomItem fancyIronRapier = new FancyRapier(Material.IRON_INGOT, 6002, 5, 5);
+        fancyIronRapier.registerRecipe(this);
+
         this.getServer().getPluginManager().registerEvents(this, this);
         this.getServer().getPluginManager().registerEvents(new JoinEvent(), this);
     }

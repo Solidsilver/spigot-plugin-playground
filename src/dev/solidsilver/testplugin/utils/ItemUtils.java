@@ -12,6 +12,9 @@ public class ItemUtils {
 
   public static String getMaterialName(Material m) {
     String baseName = m.toString().replace('_', ' ');
+    if (baseName.contains("INGOT")) {
+      baseName = baseName.replace("INGOT", "");
+    }
     return baseName.substring(0, 1) + baseName.substring(1).toLowerCase();
   }
 
