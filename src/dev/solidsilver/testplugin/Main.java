@@ -12,6 +12,8 @@ import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.*;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import dev.solidsilver.testplugin.items.CustomItem;
+
 public class Main extends JavaPlugin implements Listener {
 
     @Override
@@ -29,7 +31,21 @@ public class Main extends JavaPlugin implements Listener {
         for (ShapedRecipe recipe : rp.getShapedRecipies()) {
             Bukkit.addRecipe(recipe);
         }
-
+        for (CustomItem tool : Items.getToolSet(Material.EMERALD, 5004, 1.2, 1.2)) {
+            tool.registerRecipe(this);
+        }
+        for (CustomItem tool : Items.getToolSet(Material.OBSIDIAN, 5005, 2, 2)) {
+            tool.registerRecipe(this);
+        }
+        for (CustomItem tool : Items.getToolSet(Material.QUARTZ, 5006, 0.75, 3)) {
+            tool.registerRecipe(this);
+        }
+        for (CustomItem tool : Items.getToolSet(Material.BLAZE_ROD, 5007, 0.75, 3)) {
+            tool.registerRecipe(this);
+        }
+        for (CustomItem tool : Items.getToolSetFrom(Material.BLACKSTONE, "Stone", 5001)) {
+            tool.registerRecipe(this);
+        }
         this.getServer().getPluginManager().registerEvents(this, this);
         this.getServer().getPluginManager().registerEvents(new JoinEvent(), this);
     }
