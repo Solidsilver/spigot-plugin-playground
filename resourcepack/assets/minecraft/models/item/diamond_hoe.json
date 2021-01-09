@@ -1,0 +1,26 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "minecraft:item/diamond_hoe"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "custom_model_data": 5004
+      },
+      "model": "item/emerald_hoe"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 5005
+      },
+      "model": "item/obsidian_hoe"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 5007
+      },
+      "model": "item/blaze_rod_hoe"
+    }
+  ]
+}
